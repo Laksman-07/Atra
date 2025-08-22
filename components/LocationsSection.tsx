@@ -1,7 +1,8 @@
 'use client';
 
-import { MapPin, Globe, Users, Award, Target } from 'lucide-react';
+import { MapPin, Globe } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import Link from 'next/link';
 
 interface LocationCardProps {
   title: string;
@@ -13,24 +14,24 @@ function LocationCard({ title, image, icon }: LocationCardProps) {
   return (
     <Card className="group cursor-pointer overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-2 border-transparent hover:border-yellow-400">
       <div className="relative h-80 overflow-hidden">
-        <div 
+        <div
           className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
           style={{ backgroundImage: `url(${image})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all duration-500"></div>
-          
+
           {/* Icon */}
           <div className="absolute top-6 right-6 bg-yellow-400 p-3 rounded-full text-black transform transition-all duration-300 group-hover:scale-110 group-hover:bg-yellow-300 shadow-lg">
             {icon}
           </div>
-          
+
           {/* Centered Title */}
           <div className="absolute inset-0 flex items-center justify-center">
             <h3 className="text-3xl md:text-4xl font-bold text-white text-center transform transition-all duration-300 group-hover:scale-110 group-hover:text-yellow-400">
               {title}
             </h3>
           </div>
-          
+
           {/* Subtle glow effect on hover */}
           <div className="absolute inset-0 bg-yellow-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </div>
@@ -60,7 +61,7 @@ export default function LocationsSection() {
       title: 'Online',
       image: 'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800',
       icon: <Globe className="h-6 w-6" />,
-    }
+    },
   ];
 
   return (
@@ -72,70 +73,53 @@ export default function LocationsSection() {
             Find Your
             <span className="text-yellow-400 animate-pulse"> Atra Home</span>
           </h2>
-          {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-            Choose from our strategically located centers across South India or join our online community. 
-            Professional sports science solutions designed for your athletic journey.
-          </p> */}
         </div>
-
-        {/* Stats Bar
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 animate-fade-in-up animation-delay-600">
-          <div className="text-center group cursor-pointer">
-            <div className="bg-yellow-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-yellow-500 group-hover:shadow-lg">
-              <Users className="h-8 w-8 text-black" />
-            </div>
-            <div className="text-3xl font-bold text-black group-hover:text-yellow-600 transition-colors duration-300">500+</div>
-            <div className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Athletes Trained</div>
-          </div>
-          <div className="text-center group cursor-pointer">
-            <div className="bg-yellow-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-yellow-500 group-hover:shadow-lg">
-              <MapPin className="h-8 w-8 text-black" />
-            </div>
-            <div className="text-3xl font-bold text-black group-hover:text-yellow-600 transition-colors duration-300">4</div>
-            <div className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Locations</div>
-          </div>
-          <div className="text-center group cursor-pointer">
-            <div className="bg-yellow-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-yellow-500 group-hover:shadow-lg">
-              <Award className="h-8 w-8 text-black" />
-            </div>
-            <div className="text-3xl font-bold text-black group-hover:text-yellow-600 transition-colors duration-300">5+</div>
-            <div className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Years Experience</div>
-          </div>
-          <div className="text-center group cursor-pointer">
-            <div className="bg-yellow-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-yellow-500 group-hover:shadow-lg">
-              <Target className="h-8 w-8 text-black" />
-            </div>
-            <div className="text-3xl font-bold text-black group-hover:text-yellow-600 transition-colors duration-300">24/7</div>
-            <div className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Online Support</div>
-          </div>
-        </div> */}
 
         {/* Location Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {locations.map((location, index) => (
-            <div 
-              key={index} 
-              className="animate-fade-in-scale"
+            <Link
+              key={index}
+              href="/services"
+              className="block animate-fade-in-scale"
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <LocationCard {...location} />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
-      
+
       <style jsx>{`
         @keyframes fade-in-up {
-          0% { opacity: 0; transform: translateY(30px); }
-          100% { opacity: 1; transform: translateY(0); }
+          0% {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         @keyframes fade-in-scale {
-          0% { opacity: 0; transform: scale(0.8) translateY(30px); }
-          100% { opacity: 1; transform: scale(1) translateY(0); }
+          0% {
+            opacity: 0;
+            transform: scale(0.8) translateY(30px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
         }
-        .animate-fade-in-up { animation: fade-in-up 1s ease-out forwards; }
-        .animate-fade-in-scale { animation: fade-in-scale 0.8s ease-out forwards; }
-        .animation-delay-300 { animation-delay: 0.3s; }
+        .animate-fade-in-up {
+          animation: fade-in-up 1s ease-out forwards;
+        }
+        .animate-fade-in-scale {
+          animation: fade-in-scale 0.8s ease-out forwards;
+        }
+        .animation-delay-300 {
+          animation-delay: 0.3s;
+        }
       `}</style>
     </section>
   );
