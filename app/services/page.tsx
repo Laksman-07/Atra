@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import HeroSection from './HeroSection';
 import ServiceCard from './ServiceCard';
 import Footer from '@/components/Footer';
+import SocialWidget from '@/components/SocialWidget';
 
 export default function ServicesPage() {
   const services = [
@@ -62,7 +63,10 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="bg-white text-black flex flex-col min-h-screen">
+    <div className="bg-yellow-400 text-black flex flex-col min-h-screen">
+
+      <SocialWidget/>
+
       {/* Navbar */}
       <Navbar />
 
@@ -71,9 +75,15 @@ export default function ServicesPage() {
 
       {/* Services Cards */}
       <section id="services-list" className="max-w-7xl mx-auto px-4 py-20 flex-1">
-        <h2 className="text-4xl font-bold text-center mb-12 text-black">
-          Our <span className="text-yellow-400">Packages</span>
-        </h2>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 animate-fade-in-up">
+            Choose your
+            <span className="text-white animate-pulse"> Path</span>
+          </h2>
+          <p className="text-xl sm:text-2xl text-black mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
+          Your Plan, Your Pace...
+        </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service, idx) => (

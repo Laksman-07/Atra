@@ -27,7 +27,7 @@ function LocationCard({ title, image, icon }: LocationCardProps) {
 
           {/* Centered Title */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <h3 className="text-3xl md:text-4xl font-bold text-white text-center transform transition-all duration-300 group-hover:scale-110 group-hover:text-yellow-400">
+            <h3 className="text-3xl md:text-4xl font-medium text-white text-center transform transition-all duration-300 group-hover:scale-110 group-hover:text-yellow-400">
               {title}
             </h3>
           </div>
@@ -43,36 +43,39 @@ function LocationCard({ title, image, icon }: LocationCardProps) {
 export default function LocationsSection() {
   const locations = [
     {
-      title: 'Chennai',
-      image: 'https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: ' CHENNAI',
+      image: '/Chennai.jpg',
       icon: <MapPin className="h-6 w-6" />,
     },
     {
-      title: 'Bangalore',
-      image: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'BANGLORE',
+      image: '/Banglore.jpg',
       icon: <MapPin className="h-6 w-6" />,
     },
     {
-      title: 'Coimbatore',
-      image: 'https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'COIMBATORE',
+      image: '/Coimbatore.jpg',
       icon: <MapPin className="h-6 w-6" />,
     },
     {
-      title: 'Online',
-      image: 'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'ONLINE',
+      image: 'online.jpg',
       icon: <Globe className="h-6 w-6" />,
     },
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-yellow-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 animate-fade-in-up">
             Find Your
-            <span className="text-yellow-400 animate-pulse"> Atra Home</span>
+            <span className="text-white animate-pulse"> ATRA Home</span>
           </h2>
+          <p className="text-xl sm:text-2xl text-black mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
+          Expert support, wherever you are.
+        </p>
         </div>
 
         {/* Location Cards */}

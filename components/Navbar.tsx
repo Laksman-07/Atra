@@ -4,22 +4,24 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
+    { name: 'Home', href: '/' },
     { name: 'About Us', href: '#about' },
     { name: 'Join Atra', href: '#join' },
     { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
     <nav className="static md:fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-yellow-400/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          <Link href="/">
           {/* Logo */}
           <div className="flex-shrink-0">
             <div>
@@ -32,6 +34,7 @@ export default function Navbar() {
               />
             </div>
           </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
