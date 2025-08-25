@@ -15,7 +15,7 @@ export default function ServicesPage() {
       extra:
         'Our lab uses advanced sports science equipment to analyze and optimize every aspect of your training journey.',
       forwhom: `
-        Athletes of all levels—from student competitors to weekend warriors to rising pros to elite athletes.
+      Athletes of all levels:from student competitors to weekend warriors to rising pros to elite athletes.
       `,
       wedo: `
         Apply sports science to assess movement patterns, quantify performance metrics, and program drills that build explosive speed, strength, and resilience.

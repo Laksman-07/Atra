@@ -1,7 +1,7 @@
 'use client';
 
 import { MapPin, Globe } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 
 interface LocationCardProps {
@@ -12,27 +12,24 @@ interface LocationCardProps {
 
 function LocationCard({ title, image, icon }: LocationCardProps) {
   return (
-    <Card className="group cursor-pointer overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-2 border-transparent hover:border-yellow-400">
-      <div className="relative h-80 overflow-hidden">
+    <Card className="group cursor-pointer overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-0 rounded-none">
+      {/* Responsive height: landscape on mobile */}
+      <div className="relative h-40 md:h-60 lg:h-80 overflow-hidden">
         <div
           className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
           style={{ backgroundImage: `url(${image})` }}
         >
+          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all duration-500"></div>
-
-          {/* Icon */}
-          <div className="absolute top-6 right-6 bg-yellow-400 p-3 rounded-full text-black transform transition-all duration-300 group-hover:scale-110 group-hover:bg-yellow-300 shadow-lg">
-            {icon}
-          </div>
 
           {/* Centered Title */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <h3 className="text-3xl md:text-4xl font-medium text-white text-center transform transition-all duration-300 group-hover:scale-110 group-hover:text-yellow-400">
+            <h3 className="text-xl md:text-3xl lg:text-4xl font-medium text-white text-center transform transition-all duration-300 group-hover:scale-110 group-hover:text-yellow-400">
               {title}
             </h3>
           </div>
 
-          {/* Subtle glow effect on hover */}
+          {/* Glow effect on hover */}
           <div className="absolute inset-0 bg-yellow-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </div>
       </div>
@@ -40,15 +37,16 @@ function LocationCard({ title, image, icon }: LocationCardProps) {
   );
 }
 
+
 export default function LocationsSection() {
   const locations = [
     {
-      title: ' CHENNAI',
+      title: 'CHENNAI',
       image: '/Chennai.jpg',
       icon: <MapPin className="h-6 w-6" />,
     },
     {
-      title: 'BANGLORE',
+      title: 'BANGALORE',
       image: '/Banglore.jpg',
       icon: <MapPin className="h-6 w-6" />,
     },
@@ -59,38 +57,36 @@ export default function LocationsSection() {
     },
     {
       title: 'ONLINE',
-      image: 'online.jpg',
+      image: '/online.jpg',
       icon: <Globe className="h-6 w-6" />,
     },
   ];
 
   return (
     <section className="py-20 bg-yellow-400">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 animate-fade-in-up">
-            Find Your
-            <span className="text-white animate-pulse"> ATRA Home</span>
-          </h2>
-          <p className="text-xl sm:text-2xl text-black mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
+      {/* Section Header */}
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 animate-fade-in-up">
+          Find Your
+          <span className="text-white animate-pulse"> Atra Home</span>
+        </h2>
+        <p className="text-xl sm:text-2xl text-black mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
           Expert support, wherever you are.
         </p>
-        </div>
+      </div>
 
-        {/* Location Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {locations.map((location, index) => (
-            <Link
-              key={index}
-              href="/services"
-              className="block animate-fade-in-scale"
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              <LocationCard {...location} />
-            </Link>
-          ))}
-        </div>
+      {/* Location Cards - full width */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 w-full">
+        {locations.map((location, index) => (
+          <Link
+            key={index}
+            href="/services"
+            className="block animate-fade-in-scale"
+            style={{ animationDelay: `${index * 200}ms` }}
+          >
+            <LocationCard {...location} />
+          </Link>
+        ))}
       </div>
 
       <style jsx>{`
