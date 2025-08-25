@@ -1,11 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SocialWidget from "@/components/SocialWidget";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useSearchParams } from "next/navigation";
 
 export default function ContactPage() {
+
+  const searchParams = useSearchParams();
+  const selectedPackage = searchParams.get("package") || "";
+  const selectedLocation = searchParams.get("location") || "";
   // Form state
+
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -14,13 +20,24 @@ export default function ContactPage() {
     gender: "",
     goal: "",
     specific: "",
-    package: "",
-    mode: "",
+    package: selectedPackage,   // prefill here
+    mode: selectedLocation ? "in_person" : "", // if location exists, assume in_person
     date: "",
     time: "",
-    location: ""
+    location: selectedLocation, // prefill here
   });
+
   const [loading, setLoading] = useState(false);
+
+    // if query changes dynamically (e.g., via navigation)
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      package: selectedPackage,
+      location: selectedLocation,
+      mode: selectedLocation ? "in_person" : prev.mode
+    }));
+  }, [selectedPackage, selectedLocation]);
 
   // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -109,9 +126,25 @@ export default function ContactPage() {
                       </a>
                     </div>
                   </div>
+                  
+                </div>
+                
+                {/* Map Card */}
+                <div className="mt-8">
+                  <h3 className="text-yellow-400 font-semibold mb-2">Find Us</h3>
+                  <div className="rounded-lg overflow-hidden shadow-lg">
+                    <iframe
+                      title="location"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7775.973133308843!2d80.26086888417115!3d12.972710882235559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d6671526a45%3A0xf084610af834037a!2sAtra%20-%20Sports%20Science%20Centre!5e0!3m2!1sen!2sus!4v1756109821424!5m2!1sen!2sus"
+                      height="180"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
                 </div>
 
-               
               </div>
 
               <div className="p-8 md:w-2/3">
