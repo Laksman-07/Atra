@@ -80,7 +80,7 @@ export default function LocationsSection() {
         {locations.map((location, index) => (
           <Link
             key={index}
-            href="/services"
+            href={`/services/${location.title.toLowerCase()}`}
             className="block animate-fade-in-scale"
             style={{ animationDelay: `${index * 200}ms` }}
           >
