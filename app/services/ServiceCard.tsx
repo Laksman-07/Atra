@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import Link from 'next/link';
 
 interface ServiceCardProps {
   title: string;
@@ -138,9 +139,11 @@ export default function ServiceCard({
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.6 }}
                 >
+                  <Link href={'/contact'}>
                   <button className="px-10 py-3 bg-gradient-to-r from-yellow-400 to-yellow-300 text-black font-semibold rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105">
                     Register
                   </button>
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>
