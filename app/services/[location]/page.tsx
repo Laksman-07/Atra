@@ -5,3 +5,5 @@ export default function LocationPage({ params }: { params: { location: string } 
 
   return <ServicesLayout location={location.toUpperCase()} />;
 }
+
+
