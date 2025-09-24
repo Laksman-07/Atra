@@ -67,11 +67,11 @@ export default function LocationsSection() {
       {/* Section Header */}
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 animate-fade-in-up">
-          Find Your
-          <span className="text-white animate-pulse"> Atra Home</span>
+          Level up at Atra,
+          <span className="text-white animate-pulse"> Near You</span>
         </h2>
         <p className="text-xl sm:text-2xl text-black mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-          Expert support, wherever you are.
+          Here to support your next chapter!
         </p>
       </div>
 

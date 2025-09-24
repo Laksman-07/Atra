@@ -19,6 +19,7 @@ export default function ContactPage() {
     age: "",
     gender: "",
     goal: "",
+    customGoal:"",
     specific: "",
     package: selectedPackage,   // prefill here
     mode: selectedLocation ? "in_person" : "", // if location exists, assume in_person
@@ -61,7 +62,7 @@ export default function ContactPage() {
         alert('Thank you! Your request for reservation has been sent. We will contact you soon');
         setFormData({
           email: "", name: "", mobile: "", age: "", gender: "",
-          goal: "", specific: "", package: "", mode: "", date: "", time: "", location:""
+          goal: "",customGoal:"", specific: "", package: "", mode: "", date: "", time: "", location:""
         });
       } else {
         alert('Something went wrong. Please try again.');
@@ -75,6 +76,17 @@ export default function ContactPage() {
     }
   };
   
+// Inside your ContactPage component, before the return:
+const mapUrls: Record<string, string> = {
+  Chennai: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7775.973133308843!2d80.26086888417115!3d12.972710882235559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d6671526a45%3A0xf084610af834037a!2sAtra%20-%20Sports%20Science%20Centre!5e0!3m2!1sen!2sus!4v1756109821424!5m2!1sen!2sus",
+  
+  Bangalore: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7776.447153537802!2d77.63392929419744!3d12.95754055509782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1543a9805545%3A0xfab1b49b6e8ba081!2sAtra%20-%20Sports%20Science%20Centre!5e0!3m2!1sen!2sin!4v1758726612200!5m2!1sen!2sin",
+  
+  Coimbatore: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.5351142786626!2d76.98610197570504!3d10.998419855058398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859873d5eb14f%3A0x508768e05b21051!2sAtra%20-%20Sports%20Science%20Centre!5e0!3m2!1sen!2sin!4v1758726702456!5m2!1sen!2sin"
+};
+
+// Get the URL for current location or fallback to Chennai
+const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["Chennai"];
 
   return (
     <div className="min-h-screen">
@@ -128,22 +140,29 @@ export default function ContactPage() {
                   </div>
                   
                 </div>
-                
-                {/* Map Card */}
-                <div className="mt-8">
-                  <h3 className="text-yellow-400 font-semibold mb-2">Find Us</h3>
-                  <div className="rounded-lg overflow-hidden shadow-lg">
-                    <iframe
-                      title="location"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7775.973133308843!2d80.26086888417115!3d12.972710882235559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d6671526a45%3A0xf084610af834037a!2sAtra%20-%20Sports%20Science%20Centre!5e0!3m2!1sen!2sus!4v1756109821424!5m2!1sen!2sus"
-                      height="180"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                  </div>
-                </div>
+{/* Map Card */}
+<div className="mt-8">
+  <h3 className="text-yellow-400 font-semibold mb-4">Our Locations</h3>
+  <div className="flex flex-col gap-4">
+    {Object.entries(mapUrls).map(([location, url]) => (
+      <div key={location} className="rounded-lg overflow-hidden shadow-lg">
+        <h4 className="text-black font-semibold text-center py-2 bg-yellow-400">{location}</h4>
+        <iframe
+          title={location}
+          src={url}
+          height="200"
+          className="w-full"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+    ))}
+  </div>
+</div>
+
+
 
               </div>
 
@@ -251,29 +270,41 @@ export default function ContactPage() {
                       </div>
                     </div>
                   </div>
+<div>
+  <label htmlFor="goal" className="block text-sm font-medium text-gray-700 mb-1">
+    What's your goal with Atra? <span className="text-red-500">*</span>
+  </label>
+  <select
+    id="goal"
+    name="goal"
+    value={formData.goal}
+    onChange={handleChange}
+    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    required
+  >
+    <option value="">Select an option</option>
+    <option value="Enhance my athletic performance">Enhance my athletic performance</option>
+    <option value="Return to my sport post-injury">Return to my sport post-injury</option>
+    <option value="Build a consistent fitness routine">Build a consistent fitness routine</option>
+    <option value="Manage my weight">Manage my weight</option>
+    <option value="Move without pain">Move without pain</option>
+    <option value="Improve my nutrition and eating habits">Improve my nutrition and eating habits</option>
+    <option value="Other">Other</option>
+  </select>
 
-                  <div>
-                    <label htmlFor="goal" className="block text-sm font-medium text-gray-700 mb-1">
-                      What's your goal with Atra? <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                      id="goal"
-                      name="goal"
-                      value={formData.goal}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      required
-                    >
-                      <option value="">Select an option</option>
-                      <option value="improve_performance">I want to improve my performance as an athlete</option>
-                      <option value="return_after_injury">I want to return to playing sport after an injury</option>
-                      <option value="fitness_lifestyle">I want to make fitness a lifestyle</option>
-                      <option value="reduce_weight">I want to reduce weight</option>
-                      <option value="pain_free">I want to be pain-free</option>
-                      <option value="healthier_eating">I want to learn to eat healthier</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+  {formData.goal === "Other" && (
+    <input
+      type="text"
+      placeholder="Please specify your goal"
+      value={formData.customGoal}
+      onChange={handleChange}
+      name="customGoal"
+      className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+      required
+    />
+  )}
+</div>
+
 
                   <div>
                     <label htmlFor="specific" className="block text-sm font-medium text-gray-700 mb-1">
@@ -288,14 +319,13 @@ export default function ContactPage() {
                       required
                     >
                       <option value="">Select an option</option>
-                      <option value="sports_science">Sports Science (Inclusive of S&C, Nutrition, Physiotherapy, Psychology, Medicine)</option>
+                      <option value="sports_science">Sports Science (Inclusive of S&C, Nutrition, Physiotherapy, Psychology & Sports Medicine)</option>
                       <option value="strength_conditioning">Strength and Conditioning</option>
-                      <option value="nutrition">Nutrition</option>
+                      <option value="nutrition">Sports Nutrition</option>
                       <option value="physiotherapy">Physiotherapy</option>
                       <option value="sports_medicine">Sports Medicine</option>
                       <option value="sports_psychology">Sports Psychology</option>
-                      <option value="curious">Nothing in specific, Just curious</option>
-                      <option value="other">Other</option>
+                      <option value="curious">I'm just exploring!</option>
                     </select>
                   </div>
 
@@ -311,10 +341,12 @@ export default function ContactPage() {
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select an option</option>
-                      <option value="individual">1 on 1 Individual Training</option>
-                      <option value="group">Group Training</option>
-                      <option value="online">Online Training</option>
-                      <option value="hybrid">Hybrid Training</option>
+                      <option value="individual">Executive Program  (1 on 1 training)</option>
+                      <option value="group">Coast Crew Program(Group training)</option>
+                      <option value="semi-private">Partner Program (Semi-Private training)</option>
+                      <option value="home">Home-fit Program (Home-Training)</option>
+                      <option value="online-one ">Online-training (1 on 1 training)</option>
+                      <option value="online-group">Online-training (Group training)</option>
                     </select>
                   </div>
 

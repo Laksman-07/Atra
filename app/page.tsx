@@ -3,6 +3,7 @@ import HeroSection from '@/components/HeroSection';
 import LocationsSection from '@/components/LocationsSection';
 import Footer from '@/components/Footer';
 import SocialWidget from '@/components/SocialWidget';
+import VerticalsSection from '@/components/VerticalsSection';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <SocialWidget/>
       <Navbar />
       <HeroSection />
+      <VerticalsSection/>
       <LocationsSection />
       <Footer />
     </main>

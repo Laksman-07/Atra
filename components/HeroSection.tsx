@@ -28,14 +28,13 @@ export default function HeroSection() {
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
           <span className="text-yellow-400 block">Atra</span>
           <span className="text-white block sm:text-4xl md:text-5xl lg:text-6xl font-bold">
-            For athletes, injury-survivors, and busy professionals
+           Unlock your Potential through Sports Science
           </span>
         </h1>
         
 
         <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xl my-8 leading-relaxed">
-          Professional sports science solutions across South India.  
-          Expert coaching, recovery strategies, and performance analysis tailored for your journey.
+        Bringing sports science to your training so you can perform better, recover faster, and keep pushing your limits !
         </p>
 
         <Link href={'/contact'}>
