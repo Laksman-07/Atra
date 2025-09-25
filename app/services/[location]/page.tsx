@@ -1,9 +1,9 @@
 import ServicesLayout from "../ServicesLayout";
 
-export default function LocationPage({ params }: { params: { location: string } }) {
-  const { location } = params;
-
-  return <ServicesLayout location={location.toUpperCase()} />;
+export default function LocationPage({
+  params,
+}: {
+  params: { location: string };
+}) {
+  return <ServicesLayout location={params.location} />;
 }
-
-

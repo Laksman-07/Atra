@@ -341,12 +341,10 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select an option</option>
-                      <option value="individual">Executive Program  (1 on 1 training)</option>
-                      <option value="group">Coast Crew Program(Group training)</option>
-                      <option value="semi-private">Partner Program (Semi-Private training)</option>
-                      <option value="home">Home-fit Program (Home-Training)</option>
-                      <option value="online-one ">Online-training (1 on 1 training)</option>
-                      <option value="online-group">Online-training (Group training)</option>
+                      <option value="individual">1 on 1 Individual Training</option>
+                      <option value="group">Group Training</option>
+                      <option value="online">Online Training</option>
+                      <option value="hybrid">Hybrid Training</option>
                     </select>
                   </div>
 
@@ -368,7 +366,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                     </select>
                   </div>
 
-                  {formData.mode === "in_person" && ( <div>
+                  <div>
                     <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
                       Preferred Location <span className="text-red-500">*</span>
                     </label>
@@ -386,7 +384,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       <option value="Coimbatore">Coimbatore</option>
                     </select>
                   </div>
-                  )}
+                  
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
