@@ -91,7 +91,22 @@ export default function Footer() {
                 <p>For more info: admin@atra.life</p>
               </div>
             </div>
-          {/* Social Media */} <div className="flex space-x-4"> <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Facebook className="h-5 w-5" /> </a> <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Twitter className="h-5 w-5" /> </a> <a href="https://www.instagram.com/atra.ssc/?hl=en" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Instagram className="h-5 w-5" /> </a> <a href="https://www.linkedin.com/company/atra-ssc/" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Linkedin className="h-5 w-5" /> </a> </div>
+
+          {/* Social Media */}
+           <div className="flex pl-20 space-x-4"> 
+            {/* <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> 
+              <Facebook className="h-5 w-5" /> 
+            </a> 
+            <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> 
+              <Twitter className="h-5 w-5" /> 
+            </a>  */}
+            <a href="https://www.instagram.com/atra.ssc/?hl=en" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> 
+            <Instagram className="h-5 w-5" /> 
+            </a> 
+            <a href="https://www.linkedin.com/company/atra-ssc/" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> 
+            <Linkedin className="h-5 w-5" /> 
+            </a> 
+            </div>
           </div>
 
           {/* Newsletter */}

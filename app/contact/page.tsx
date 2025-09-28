@@ -161,9 +161,6 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
     ))}
   </div>
 </div>
-
-
-
               </div>
 
               <div className="p-8 md:w-2/3">
@@ -305,7 +302,6 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
   )}
 </div>
 
-
                   <div>
                     <label htmlFor="specific" className="block text-sm font-medium text-gray-700 mb-1">
                       Are you looking for something in specific? <span className="text-red-500">*</span>
@@ -341,10 +337,18 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select an option</option>
-                      <option value="individual">1 on 1 Individual Training</option>
-                      <option value="group">Group Training</option>
-                      <option value="online">Online Training</option>
-                      <option value="hybrid">Hybrid Training</option>
+                      <option value="executive">Executive Program  (1 on 1 training)</option>
+                      <option value="coast_crew">Coast Crew Program(Group training)</option>
+                      <option value="partner">Partner Program (Semi-Private training)</option>
+                      <option value="home-fit">Home-fit Program (Home-Training)</option>
+                      <option value="online_one">Online-training (1 on 1 training)</option>
+                      <option value="online_group">Online-training (Group training)</option>
+                      <option value="nutrition_guidance">Nutrition Guidance</option>
+                      <option value="grind">The Grind Program (1 on 1 training)</option>
+                      <option value="athlete_tribe">The Athlete Tribe (Semi-Private training)</option>
+                      <option value="sports_nutrition">Sports Nutrition </option>
+                      <option value="performance_psychology">Performance Psychology</option>
+                      <option value="rebuild_program">The Rebuild Program (1 on 1 training)</option>
                     </select>
                   </div>
 
@@ -366,6 +370,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                     </select>
                   </div>
 
+  {formData.mode == "in_person" && (
                   <div>
                     <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
                       Preferred Location <span className="text-red-500">*</span>
@@ -384,7 +389,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       <option value="Coimbatore">Coimbatore</option>
                     </select>
                   </div>
-                  
+  )}
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
