@@ -1,6 +1,7 @@
 // Region-specific service data
 
 export interface Program {
+    location?: any;
     title: string;
     description: string;
     price: string;

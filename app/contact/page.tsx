@@ -3,13 +3,19 @@ import { useState, useEffect } from "react";
 import SocialWidget from "@/components/SocialWidget";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { log } from "console";
+
+
 
 export default function ContactPage() {
 
   const searchParams = useSearchParams();
   const selectedPackage = searchParams.get("package") || "";
   const selectedLocation = searchParams.get("location") || "";
+  
+  const router = useRouter();
+  
   // Form state
 
   const [formData, setFormData] = useState({
@@ -21,24 +27,26 @@ export default function ContactPage() {
     goal: "",
     customGoal:"",
     specific: "",
-    package: selectedPackage,   // prefill here
-    mode: selectedLocation ? "in_person" : "", // if location exists, assume in_person
+    package: "",   // prefill here
+    mode: "", // if location exists, assume in_person
     date: "",
     time: "",
-    location: selectedLocation, // prefill here
+    location: "", // prefill here
   });
 
   const [loading, setLoading] = useState(false);
 
-    // if query changes dynamically (e.g., via navigation)
   useEffect(() => {
-    setFormData(prev => ({
-      ...prev,
-      package: selectedPackage,
-      location: selectedLocation,
-      mode: selectedLocation ? "in_person" : prev.mode
-    }));
-  }, [selectedPackage, selectedLocation]);
+  const selectedPackage = searchParams.get("package") || "";
+  const selectedLocation = searchParams.get("location") || "";
+   console.log(selectedLocation);
+  setFormData(prev => ({
+    ...prev,
+    package: selectedPackage,
+    location: selectedLocation,
+    mode: selectedLocation ? "in_person" : prev.mode
+  }));
+}, [searchParams]);
 
   // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -47,34 +55,39 @@ export default function ContactPage() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-  
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert('Thank you! Your request for reservation has been sent. We will contact you soon');
+      
+      // Reset form data
+      setFormData({
+        email: "", name: "", mobile: "", age: "", gender: "",
+        goal: "", customGoal:"", specific: "", package: "", mode: "", date: "", time: "", location:""
       });
-  
-      if (response.ok) {
-        alert('Thank you! Your request for reservation has been sent. We will contact you soon');
-        setFormData({
-          email: "", name: "", mobile: "", age: "", gender: "",
-          goal: "",customGoal:"", specific: "", package: "", mode: "", date: "", time: "", location:""
-        });
-      } else {
-        alert('Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
-      alert('Error sending form. Try again later.');
+
+      // ✅ Clear query params from URL
+      router.replace(window.location.pathname, { scroll: false });
+    } else {
+      alert('Something went wrong. Please try again.');
     }
-    finally {
-      setLoading(false);
-    }
-  };
+  } catch (error) {
+    console.error('Submission error:', error);
+    alert('Error sending form. Try again later.');
+  } finally {
+    setLoading(false);
+  }
+};
+
   
 // Inside your ContactPage component, before the return:
 const mapUrls: Record<string, string> = {
@@ -337,18 +350,18 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select an option</option>
-                      <option value="executive">Executive Program  (1 on 1 training)</option>
-                      <option value="coast_crew">Coast Crew Program(Group training)</option>
-                      <option value="partner">Partner Program (Semi-Private training)</option>
-                      <option value="home-fit">Home-fit Program (Home-Training)</option>
-                      <option value="online_one">Online-training (1 on 1 training)</option>
-                      <option value="online_group">Online-training (Group training)</option>
-                      <option value="nutrition_guidance">Nutrition Guidance</option>
-                      <option value="grind">The Grind Program (1 on 1 training)</option>
-                      <option value="athlete_tribe">The Athlete Tribe (Semi-Private training)</option>
-                      <option value="sports_nutrition">Sports Nutrition </option>
-                      <option value="performance_psychology">Performance Psychology</option>
-                      <option value="rebuild_program">The Rebuild Program (1 on 1 training)</option>
+                      <option value="The Executive Program (1-1 training)">Executive Program (1 on 1 training)</option>
+                      <option value="The Coastal Crew (Group training) 6 am - 7 am">Coast Crew Program(Group training)</option>
+                      <option value="The Partner Program (Semi Private training)">Partner Program (Semi-Private training)</option>
+                      <option value="Home-fit Program (Home training)">Home-fit Program (Home-Training)</option>
+                      <option value="Online training (1-1 training)">Online-training (1 on 1 training)</option>
+                      <option value="Online training (group training)">Online-training (Group training)</option>
+                      <option value="Nutrition Guidance">Nutrition Guidance</option>
+                      <option value="The Grind Program (1-1 training)">The Grind Program (1 on 1 training)</option>
+                      <option value="The Athlete Tribe (Semi Private training)">The Athlete Tribe (Semi-Private training)</option>
+                      <option value="Sports Nutrition">Sports Nutrition </option>
+                      <option value="Performance Psychology">Performance Psychology</option>
+                      <option value="The Re-build Program (1-1 training)">The Rebuild Program (1 on 1 training)</option>
                     </select>
                   </div>
 
@@ -384,9 +397,9 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       required
                     >
                       <option value="">Select a location</option>
-                      <option value="Chennai">Chennai</option>
-                      <option value="Bangalore">Bangalore</option>
-                      <option value="Coimbatore">Coimbatore</option>
+                      <option value="chennai">Chennai</option>
+                      <option value="bangalore">Bangalore</option>
+                      <option value="coimbatore">Coimbatore</option>
                     </select>
                   </div>
   )}

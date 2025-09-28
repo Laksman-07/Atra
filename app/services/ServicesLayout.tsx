@@ -97,6 +97,7 @@ export default function ServicesLayout({ location }: { location?: string }) {
           onClose={() => router.push("", { scroll: false })}
           programs={selectedService.programs}
           initialProgram={programParam ? parseInt(programParam) : 0}
+          location={location}
         />
       )}
     </div>
