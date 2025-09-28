@@ -68,7 +68,7 @@ export default function LocationsSection() {
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 animate-fade-in-up">
           Level up at Atra,
-          <span className="text-white animate-pulse"> Near You</span>
+          <span className="block md:inline text-white animate-pulse"> Near You</span>
         </h2>
         <p className="text-xl sm:text-2xl text-black mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
           Here to support your next chapter!

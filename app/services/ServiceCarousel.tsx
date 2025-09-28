@@ -24,10 +24,10 @@ export default function ServiceCarousel({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Determine initialProgram from URL if provided
+  // Determine initial slide index from URL if "program" is present
   const initialProgramParam = searchParams.get("program");
   const initialProgramIndex =
-    initialProgramParam
+    initialProgramParam != null
       ? programs.findIndex((p) => p.title === initialProgramParam)
       : initialProgram;
 
@@ -42,26 +42,48 @@ export default function ServiceCarousel({
       const newIndex = s.track.details.rel;
       setCurrentSlide(newIndex);
 
-      // Update program param using title
-      const params = new URLSearchParams(searchParams.toString());
+      // Update program param in URL using title
+      const params = new URLSearchParams(window.location.search);
       params.set("program", programs[newIndex].title);
       router.replace(`?${params.toString()}`, { scroll: false });
     },
   });
 
-  useEffect(() => {
-    if (open && programs.length > 0) {
-      const newIndex =
-        initialProgramParam != null
-          ? programs.findIndex((p) => p.title === initialProgramParam)
-          : undefined;
+useEffect(() => {
+  // Only run if modal is opening
+  if (!open) return;
+  if (programs.length === 0) return;
+
+  const newIndex =
+    initialProgramParam != null
+      ? programs.findIndex((p) => p.title === initialProgramParam)
+      : undefined;
+
+  const idx = newIndex !== undefined && newIndex >= 0 ? newIndex : initialProgram;
+
+  setCurrentSlide(idx);
+  instanceRef.current?.moveToIdx(idx);
+
+  // ✅ Only update URL if modal is opening
+  const params = new URLSearchParams(window.location.search);
+  params.set("program", programs[idx].title);
+  router.replace(`?${params.toString()}`, { scroll: false });
+}, [open]); // only depend on `open`
+
+  const handleClose = () => {
+    onClose();
   
-      const idx = newIndex !== undefined && newIndex >= 0 ? newIndex : initialProgram;
+    // Get current pathname
+    const pathname = window.location.pathname;
   
-      setCurrentSlide(idx);
-      instanceRef.current?.moveToIdx(idx);
-    }
-  }, [open, initialProgram, initialProgramParam, instanceRef, programs]);
+    // Build new search params without 'service' and 'program'
+    const params = new URLSearchParams(window.location.search);
+    params.delete("service");
+    params.delete("program");
+  
+    // Replace URL without reloading
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
   
 
   return (
@@ -82,13 +104,7 @@ export default function ServiceCarousel({
           >
             {/* Close Button */}
             <button
-              onClick={() => {
-                onClose();
-                const params = new URLSearchParams(searchParams.toString());
-                params.delete("service");
-                params.delete("program");
-                router.replace(`?${params.toString()}`, { scroll: false });
-              }}
+              onClick={handleClose}
               className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-yellow-400 hover:bg-yellow-300 rounded-full p-2 shadow-lg z-50"
             >
               <X className="h-5 w-5 sm:h-6 sm:w-6 text-black" />

@@ -34,6 +34,11 @@ export default function ServicesLayout({ location }: { location?: string }) {
     }
   }, [serviceParam, services]);
 
+  const capitalizedWord = location
+    ? location.charAt(0).toUpperCase() + location.slice(1)
+    : "";
+
+
   return (
     <div className="bg-yellow-400 text-black flex flex-col min-h-screen">
       <SocialWidget />
@@ -45,7 +50,7 @@ export default function ServicesLayout({ location }: { location?: string }) {
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
             {location ? (
               <>
-                Services in <span className="text-white">{location}</span>
+                Services in <span className="text-white">{capitalizedWord}</span>
               </>
             ) : (
               <>

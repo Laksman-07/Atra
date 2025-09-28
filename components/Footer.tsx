@@ -49,19 +49,28 @@ export default function Footer() {
             </div>
           ))}
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-xl font-semibold text-yellow-400 mb-4">Quick Links</h4>
-            <ul className="space-y-3 text-gray-300 text-sm">
-              {['Home', 'About Us', 'Blog', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="hover:text-yellow-400 transition-colors duration-200">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Quick Links */}
+<div>
+  <h4 className="text-xl font-semibold text-yellow-400 mb-4">Quick Links</h4>
+  <ul className="space-y-3 text-gray-300 text-sm">
+    {[
+      { name: 'Home', href: '/' },
+      { name: 'About Us', href: '/about' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'Contact', href: '/contact' },
+     ].map((link) => (
+      <li key={link.name}>
+        <a
+          href={link.href}
+          className="hover:text-yellow-400 transition-colors duration-200"
+        >
+          {link.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
         </div>
 
         {/* Bottom Row: Contact + Newsletter */}
@@ -82,7 +91,7 @@ export default function Footer() {
                 <p>For more info: admin@atra.life</p>
               </div>
             </div>
-          {/* Social Media */} <div className="flex space-x-4"> <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Facebook className="h-5 w-5" /> </a> <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Twitter className="h-5 w-5" /> </a> <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Instagram className="h-5 w-5" /> </a> <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Linkedin className="h-5 w-5" /> </a> </div>
+          {/* Social Media */} <div className="flex space-x-4"> <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Facebook className="h-5 w-5" /> </a> <a href="#" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Twitter className="h-5 w-5" /> </a> <a href="https://www.instagram.com/atra.ssc/?hl=en" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Instagram className="h-5 w-5" /> </a> <a href="https://www.linkedin.com/company/atra-ssc/" className="bg-yellow-400 p-2 rounded-full text-black hover:bg-yellow-500 transition-colors"> <Linkedin className="h-5 w-5" /> </a> </div>
           </div>
 
           {/* Newsletter */}
@@ -106,14 +115,14 @@ export default function Footer() {
               
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {currentYear} Atra Sports Science. All rights reserved.
+          {/* <p className="text-gray-400 text-sm mb-4 md:mb-0">
+             {currentYear} Atra Sports Science
           </p>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">Privacy Policy</a>
             <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">Terms of Service</a>
             <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">Cookie Policy</a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

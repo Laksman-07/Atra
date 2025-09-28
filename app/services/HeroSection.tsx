@@ -19,9 +19,9 @@ export default function HeroSection() {
           className="absolute inset-0 w-full h-full object-cover"
           poster="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1920"
         >
-          <source src="https://videos.pexels.com/video-files/2795405/2795405-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+          {/* <source src="https://videos.pexels.com/video-files/2795405/2795405-uhd_2560_1440_25fps.mp4" type="video/mp4" />
           <source src="https://videos.pexels.com/video-files/2795405/2795405-hd_1920_1080_25fps.mp4" type="video/mp4" />
-          {/* Fallback image if video fails to load */}
+          Fallback image if video fails to load */}
           <div 
             className="w-full h-full bg-cover bg-center"
             style={{ 
