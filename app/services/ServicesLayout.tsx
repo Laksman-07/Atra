@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import HeroSection from "./HeroSection";
 import ServiceCard from "./ServiceCard";
@@ -10,15 +11,33 @@ import SocialWidget from "@/components/SocialWidget";
 import { regionServices, ServiceCategory } from "./regionServicesData";
 
 export default function ServicesLayout({ location }: { location?: string }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [selectedService, setSelectedService] = useState<ServiceCategory | null>(null);
 
   const services = location ? regionServices[location.toLowerCase()] : [];
+
+  // Read params
+  const serviceParam = searchParams.get("service");
+  const programParam = searchParams.get("program");
+
+  // Open service if service param exists
+  useEffect(() => {
+    if (serviceParam) {
+      const found = services.find(
+        (s) => s.title.toLowerCase().replace(/\s+/g, "-") === serviceParam
+      );
+      if (found) setSelectedService(found);
+    } else {
+      setSelectedService(null);
+    }
+  }, [serviceParam, services]);
 
   return (
     <div className="bg-yellow-400 text-black flex flex-col min-h-screen">
       <SocialWidget />
       <Navbar />
-
       <HeroSection />
 
       <section id="services-list" className="max-w-7xl mx-auto px-4 py-20 flex-1">
@@ -55,7 +74,10 @@ export default function ServicesLayout({ location }: { location?: string }) {
               title={service.title}
               subtitle={service.subtitle}
               image={service.image}
-              onClick={() => setSelectedService(service)}
+              onClick={() => {
+                const slug = service.title.toLowerCase().replace(/\s+/g, "-");
+                router.push(`?service=${slug}`, { scroll: false });
+              }}
             />
           ))}
         </div>
@@ -67,8 +89,9 @@ export default function ServicesLayout({ location }: { location?: string }) {
       {selectedService && (
         <ServiceCarousel
           open={!!selectedService}
-          onClose={() => setSelectedService(null)}
+          onClose={() => router.push("", { scroll: false })}
           programs={selectedService.programs}
+          initialProgram={programParam ? parseInt(programParam) : 0}
         />
       )}
     </div>

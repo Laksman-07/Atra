@@ -6,25 +6,63 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { Program } from "./regionServicesData";
 import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface ServiceCarouselProps {
   open: boolean;
   onClose: () => void;
   programs: Program[];
+  initialProgram?: number;
 }
 
-export default function ServiceCarousel({ open, onClose, programs }: ServiceCarouselProps) {
-  const [currentSlide, setCurrentSlide] = useState(0);
+export default function ServiceCarousel({
+  open,
+  onClose,
+  programs,
+  initialProgram = 0,
+}: ServiceCarouselProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Determine initialProgram from URL if provided
+  const initialProgramParam = searchParams.get("program");
+  const initialProgramIndex =
+    initialProgramParam
+      ? programs.findIndex((p) => p.title === initialProgramParam)
+      : initialProgram;
+
+  const [currentSlide, setCurrentSlide] = useState(
+    initialProgramIndex >= 0 ? initialProgramIndex : 0
+  );
+
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
+    initial: currentSlide,
     slideChanged(s) {
-      setCurrentSlide(s.track.details.rel);
+      const newIndex = s.track.details.rel;
+      setCurrentSlide(newIndex);
+
+      // Update program param using title
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("program", programs[newIndex].title);
+      router.replace(`?${params.toString()}`, { scroll: false });
     },
   });
 
   useEffect(() => {
-    if (open) setCurrentSlide(0);
-  }, [open]);
+    if (open && programs.length > 0) {
+      const newIndex =
+        initialProgramParam != null
+          ? programs.findIndex((p) => p.title === initialProgramParam)
+          : undefined;
+  
+      const idx = newIndex !== undefined && newIndex >= 0 ? newIndex : initialProgram;
+  
+      setCurrentSlide(idx);
+      instanceRef.current?.moveToIdx(idx);
+    }
+  }, [open, initialProgram, initialProgramParam, instanceRef, programs]);
+  
 
   return (
     <AnimatePresence>
@@ -35,7 +73,6 @@ export default function ServiceCarousel({ open, onClose, programs }: ServiceCaro
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          {/* Modal Container */}
           <motion.div
             className="relative max-w-5xl w-full rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-800 via-gray-900 to-black"
             initial={{ opacity: 0, scale: 0.9, y: 40 }}
@@ -43,9 +80,15 @@ export default function ServiceCarousel({ open, onClose, programs }: ServiceCaro
             exit={{ opacity: 0, scale: 0.9, y: 40 }}
             transition={{ duration: 0.3 }}
           >
-            {/* Close Button - inside modal */}
+            {/* Close Button */}
             <button
-              onClick={onClose}
+              onClick={() => {
+                onClose();
+                const params = new URLSearchParams(searchParams.toString());
+                params.delete("service");
+                params.delete("program");
+                router.replace(`?${params.toString()}`, { scroll: false });
+              }}
               className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-yellow-400 hover:bg-yellow-300 rounded-full p-2 shadow-lg z-50"
             >
               <X className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
@@ -88,7 +131,6 @@ export default function ServiceCarousel({ open, onClose, programs }: ServiceCaro
                         </div>
                       )}
 
-                      {/* Register Button */}
                       <button className="bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-8 py-2 sm:px-10 sm:py-3 rounded-full shadow-xl transition-transform hover:scale-105">
                         Register
                       </button>
@@ -97,7 +139,7 @@ export default function ServiceCarousel({ open, onClose, programs }: ServiceCaro
                 ))}
               </div>
 
-              {/* Navigation Arrows */}
+              {/* Arrows */}
               <button
                 onClick={() => instanceRef.current?.prev()}
                 className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-yellow-400 hover:bg-yellow-300 rounded-full p-2 sm:p-3 shadow-lg"
@@ -111,7 +153,7 @@ export default function ServiceCarousel({ open, onClose, programs }: ServiceCaro
                 <ChevronRight className="h-5 sm:h-6 w-5 sm:w-6 text-black" />
               </button>
 
-              {/* Pagination Dots */}
+              {/* Dots */}
               <div className="flex justify-center gap-3 mt-6 pb-4 sm:mt-8">
                 {programs.map((_, idx) => (
                   <button
