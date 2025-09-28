@@ -21,7 +21,7 @@ export default function ServicesLayout({ location }: { location?: string }) {
 
       <HeroSection />
 
-      <section className="max-w-7xl mx-auto px-4 py-20 flex-1">
+      <section id="services-list" className="max-w-7xl mx-auto px-4 py-20 flex-1">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
             {location ? (
