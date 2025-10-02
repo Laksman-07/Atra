@@ -73,10 +73,10 @@ const SocialWidget: React.FC = () => {
       </MainButton>
       <div className="social-links">
         <a href="https://www.instagram.com/atra.ssc/" target="_blank" rel="noopener noreferrer">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" className="w-10 h-10" />
         </a>
         <a href="https://wa.me/9600411808" target="_blank" rel="noopener noreferrer">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" className="w-10 h-10" />
         </a>
       </div>
     </WidgetContainer>

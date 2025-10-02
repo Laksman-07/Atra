@@ -350,18 +350,18 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select an option</option>
-                      <option value="The Executive Program (1-1 training)">Executive Program (1 on 1 training)</option>
-                      <option value="The Coastal Crew (Group training) 6 am - 7 am">Coast Crew Program(Group training)</option>
-                      <option value="The Partner Program (Semi Private training)">Partner Program (Semi-Private training)</option>
-                      <option value="Home-fit Program (Home training)">Home-fit Program (Home-Training)</option>
-                      <option value="Online training (1-1 training)">Online-training (1 on 1 training)</option>
-                      <option value="Online training (group training)">Online-training (Group training)</option>
-                      <option value="Nutrition Guidance">Nutrition Guidance</option>
-                      <option value="The Grind Program (1-1 training)">The Grind Program (1 on 1 training)</option>
-                      <option value="The Athlete Tribe (Semi Private training)">The Athlete Tribe (Semi-Private training)</option>
-                      <option value="Sports Nutrition">Sports Nutrition </option>
-                      <option value="Performance Psychology">Performance Psychology</option>
-                      <option value="The Re-build Program (1-1 training)">The Rebuild Program (1 on 1 training)</option>
+                      <option value="The Executive Program (1-1 training)">Executive Program (1 on 1 training) - ₹12,000/Month , ₹30,000/Quarter</option>
+                      <option value="The Coastal Crew (Group training) 6 am - 7 am">Coast Crew Program(Group training) - ₹4,000/Month , ₹10,000/Quarter</option>
+                      <option value="The Partner Program (Semi Private training)">Partner Program (Semi-Private training) - ₹6,500/Month , ₹15,000/Quarter</option>
+                      <option value="Home-fit Program (Home training)">Home-fit Program (Home-Training) - ₹15,000/Month , ₹40,000/Quarter</option>
+                      <option value="Online training (1-1 training)">Online-training (1 on 1 training) - ₹6,000/Month , ₹15,000/Quarter</option>
+                      <option value="Online training (group training)">Online-training (Group training) - ₹4,000/Month , ₹10,000/Quarter</option>
+                      <option value="Nutrition Guidance">Nutrition Guidance - Consultation with Report: ₹800, Consultation with Diet Chart: ₹1,500</option>
+                      <option value="The Grind Program (1-1 training)">The Grind Program (1 on 1 training) - ₹12,000/Month , ₹30,000/Quarter</option>
+                      <option value="The Athlete Tribe (Semi Private training)">The Athlete Tribe (Semi-Private training) -  ₹6,500/Month , ₹15,000/Quarter</option>
+                      <option value="Sports Nutrition">Sports Nutrition - Consultation with Report: ₹800, Consultation with Diet Chart: ₹1,500</option>
+                      <option value="Performance Psychology">Performance Psychology - Consultation: ₹1,500 </option>
+                      <option value="The Re-build Program (1-1 training)">The Rebuild Program (1 on 1 training) - ₹12,000/Month , ₹30,000/Quarter</option>
                     </select>
                   </div>
 
