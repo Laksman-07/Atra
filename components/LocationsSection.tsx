@@ -66,7 +66,7 @@ export default function LocationsSection() {
     <section className="py-20 bg-yellow-400">
       {/* Section Header */}
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 animate-fade-in-up">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-black mb-6 animate-fade-in-up">
           Level up at Atra,
           <span className="block md:inline text-white animate-pulse"> Near You</span>
         </h2>

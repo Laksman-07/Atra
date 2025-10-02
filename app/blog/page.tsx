@@ -32,10 +32,10 @@ export default function BlogPage() {
       <section className="py-24 px-6 md:px-20 bg-yellow-400 flex-1">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-black relative inline-block">
-            Our Latest Blogs
-            <span className="block w-16 h-1 bg-black mx-auto mt-3 rounded-full"></span>
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-black mb-6 animate-fade-in-up">
+          Our Latest
+          <span className="block md:inline text-white animate-pulse"> Blogs</span>
+        </h2>
           <p className="text-gray-700 mt-3">Explore our latest posts & updates</p>
         </div>
 

@@ -24,9 +24,9 @@ export default function VerticalsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold mb-14 md:mb-20"
+          className="text-4xl md:text-5xl font-extrabold mb-14 md:mb-20"
         >
-          Our <span className="text-yellow-400">Verticals</span>
+          Our <span className="animate-pulse text-yellow-400">Verticals</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 mb-12 md:mb-16">

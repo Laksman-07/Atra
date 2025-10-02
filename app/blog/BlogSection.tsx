@@ -28,9 +28,9 @@ export default function BlogSection() {
     <section className="py-16 md:py-20 px-6 bg-white">
       {/* Section Heading */}
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-4xl font-extrabold text-black relative inline-block">
-          Our Latest Blogs
-          <span className="block w-20 h-1 bg-yellow-400 mx-auto mt-3 rounded-full"></span>
+        <h2 className="text-4xl md:text-5xl font-extrabold text-black mb-6 animate-fade-in-up">
+          Our Latest
+          <span className="block md:inline text-white animate-pulse"> Blogs</span>
         </h2>
         <p className="text-gray-600 mt-4 text-lg">
           Discover insights, updates, and tips from our latest posts
