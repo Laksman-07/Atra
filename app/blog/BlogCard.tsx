@@ -15,7 +15,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
             src={blog.image}
             alt={blog.title}
             fill
-            className="object-cover group-hover:scale-105 transition"
+            className="object-fit group-hover:scale-105 transition"
           />
         </div>
         <div className="p-5 text-left">
