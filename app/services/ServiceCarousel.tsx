@@ -8,6 +8,7 @@ import { Program } from "./regionServicesData";
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+
 interface ServiceCarouselProps {
   open: boolean;
   onClose: () => void;
@@ -152,31 +153,9 @@ useEffect(() => {
                         </div>
                       )}
 
-                <button
-  onClick={() => {
-    // Get package from current slide
-    const params = new URLSearchParams();
-    params.set("package", programs[currentSlide].title);
-
-    // Extract location from URL path
-    const pathnameParts = window.location.pathname.split("/"); 
-    // e.g., ["", "services", "bangalore"]
-    const locationFromPath = pathnameParts[2] || ""; 
-
-    if (locationFromPath) {
-      params.set("location", locationFromPath);
-    }
-
-    // Navigate to contact page
-    router.push(`/contact?${params.toString()}`);
-  }}
-  className="bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-8 py-2 sm:px-10 sm:py-3 rounded-full shadow-xl transition-transform hover:scale-105"
->
-  Register
-</button>
-
-
-
+                      <button className="bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-8 py-2 sm:px-10 sm:py-3 rounded-full shadow-xl transition-transform hover:scale-105">
+                        Register
+                      </button>
                     </motion.div>
                   </div>
                 ))}
