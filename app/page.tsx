@@ -11,7 +11,7 @@ export default function Home() {
       <SocialWidget/>
       <Navbar />
       <HeroSection />
-      <VerticalsSection/>
+      {/* <VerticalsSection/> */}
       <LocationsSection />
       <Footer />
     </main>

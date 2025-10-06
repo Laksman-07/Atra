@@ -51,17 +51,23 @@ const MainButton = styled.button`
   background: #333;
   color: #fff;
   border: none;
-  padding: 15px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  font-size: 18px;
+  font-size: 22px;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background: #555;
+    transform: scale(1.05);
   }
 `;
+
 
 const SocialWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

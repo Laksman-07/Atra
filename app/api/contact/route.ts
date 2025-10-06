@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   const data = await req.json();
   const {
     email, name, mobile, age, gender,
-    goal, customGoal, specific, package: pkg, mode, date, time, location
+    goal, customGoal, specific, package: pkg, mode, date, time, location, lead_info, other_lead_info
   } = data;
 
   try {
@@ -41,6 +41,8 @@ export async function POST(req: Request) {
         <p><strong>Preferred Date:</strong> ${date}</p>
         <p><strong>Preferred Time:</strong> ${time}</p>
         <p><strong>Location:</strong> ${location}</p>
+        <p><strong>Lead Info:</strong> ${lead_info}</p>
+        <p><strong>Other Lead Info:</strong> ${lead_info}</p>
       `,
     });
 

@@ -71,7 +71,7 @@ export default function LocationsSection() {
           <span className="block md:inline text-white animate-pulse"> Near You</span>
         </h2>
         <p className="text-xl sm:text-2xl text-black mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-          Here to support your next chapter!
+          Choose your location to support your next chapter!
         </p>
       </div>
 

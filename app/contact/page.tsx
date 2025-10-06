@@ -32,6 +32,8 @@ export default function ContactPage() {
     date: "",
     time: "",
     location: "", // prefill here
+    lead_info: "",
+    other_lead_info: ""
   });
 
   const [loading, setLoading] = useState(false);
@@ -72,7 +74,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       // Reset form data
       setFormData({
         email: "", name: "", mobile: "", age: "", gender: "",
-        goal: "", customGoal:"", specific: "", package: "", mode: "", date: "", time: "", location:""
+        goal: "", customGoal:"", specific: "", package: "", mode: "", date: "", time: "", location:"", lead_info:"", other_lead_info:""
       });
 
       // ✅ Clear query params from URL
@@ -433,6 +435,42 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       />
                     </div>
                   </div>
+
+                  <div>
+  <label htmlFor="lead_info" className="block text-sm font-medium text-gray-700 mb-1">
+    How did you hear about Atra? <span className="text-red-500">*</span>
+  </label>
+  <select
+    id="lead_info"
+    name="lead_info"
+    value={formData.lead_info}
+    onChange={handleChange}
+    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    required
+  >
+    <option value="">Select an option</option>
+    <option value="Instagram">Instagram</option>
+    <option value="Facebook">Facebook</option>
+    <option value="WhatsApp">WhatsApp</option>
+    <option value="Friends_Family">Friends/Family</option>
+    <option value="Athletes_Coaches">Athletes/Coaches</option>
+    <option value="Events_Camps">Events/Camps</option>
+    <option value="Google_OnlineSearch">Google/Online Search</option>
+    <option value="Other">Others</option>
+  </select>
+
+  {formData.lead_info === "Other" && (
+    <input
+      type="text"
+      placeholder="How did you hear?"
+      value={formData.other_lead_info}
+      onChange={handleChange}
+      name="other_lead_info"
+      className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+      required
+    />
+  )}
+</div>
 
                   <div className="text-right">
                     <button
