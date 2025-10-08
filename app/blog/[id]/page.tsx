@@ -51,18 +51,19 @@ export default function BlogPage({ params }: BlogPageProps) {
 
         {/* Featured Image */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="w-full h-[450px] relative mb-12 rounded-2xl overflow-hidden shadow-xl"
-        >
-          <Image
-            src={blog.image}
-            alt={blog.title}
-            fill
-            className="object-fit hover:scale-105 transition-transform duration-700"
-          />
-        </motion.div>
+  initial={{ opacity: 0, scale: 0.95 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.7, delay: 0.2 }}
+  className="relative w-full aspect-[16/9] mb-12 rounded-2xl overflow-hidden shadow-xl"
+>
+  <Image
+    src={blog.image}
+    alt={blog.title}
+    fill
+    className="object-cover hover:scale-105 transition-transform duration-700"
+  />
+</motion.div>
+
 
         {/* Blog Content */}
         <motion.article

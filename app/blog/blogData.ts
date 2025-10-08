@@ -14,7 +14,7 @@ export const blogs: Blog[] = [
   {
     id: "1",
     title: "How much protein do athletes really need?",
-    author: "Moosa",
+    author: "Shalina Rebecca",
     date: "2025-10-02",
     excerpt: "Discover how much protein active individuals really need.",
     content: `
@@ -98,7 +98,7 @@ export const blogs: Blog[] = [
 {
   id: "2",
   title: "Acl recovery timeline: how to bounce back stronger",
-  author: "Rudy",
+  author: "Shalina Rebecca",
   date: "2025-04-20",
   excerpt: "Learn the phases of ACL recovery and strategies to safely return to sport.",
   content: `
@@ -195,7 +195,7 @@ export const blogs: Blog[] = [
 {
   id: "3",
   title: "Why Muscles Get Sore After Exercise (and How to Prevent It)",
-  author: "Shalina",
+  author: "Shalina Rebecca",
   date: "2025-08-15",
   excerpt: "Understanding DOMS and strategies to reduce muscle soreness",
   content: `

@@ -10,14 +10,15 @@ export default function BlogCard({ blog }: BlogCardProps) {
   return (
     <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition group">
       <Link href={`/blog/${blog.id}`}>
-        <div className="relative w-full h-52">
-          <Image
-            src={blog.image}
-            alt={blog.title}
-            fill
-            className="object-fit group-hover:scale-105 transition"
-          />
-        </div>
+<div className="relative w-full aspect-[16/9] overflow-hidden">
+      <Image
+        src={blog.image}
+        alt={blog.title}
+        fill
+        className="object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+
         <div className="p-5 text-left">
           <h3 className="text-xl font-bold text-black group-hover:text-yellow-500 transition">
             {blog.title}

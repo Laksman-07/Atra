@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogCard from "./BlogCard";
 import { blogs } from "./blogData";
+import SocialWidget from "@/components/SocialWidget";
 
 export default function BlogPage() {
   const blogsPerPage = 6; // show 6 blogs per page
@@ -25,6 +26,8 @@ export default function BlogPage() {
 
   return (
     <div className="bg-white text-black flex flex-col min-h-screen">
+      <SocialWidget/>
+
       {/* Navbar */}
       <Navbar />
 

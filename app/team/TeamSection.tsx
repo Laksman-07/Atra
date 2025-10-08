@@ -58,7 +58,7 @@ const team = [
 
 export default function TeamSection() {
   return (
-    <section className="relative py-20 bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden">
+<section className="relative py-20 bg-gradient-to-b from-black via-gray-900 to-black text-white">
       {/* Title */}
       <div className="text-center mb-16">
         <motion.h2
@@ -86,7 +86,7 @@ export default function TeamSection() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="relative group rounded-2xl p-6 backdrop-blur-lg bg-white/5 border border-white/10 shadow-xl hover:shadow-yellow-400/40 hover:-translate-y-2 transition-all duration-500 max-w-sm w-full"
+          className="relative group rounded-2xl p-6 backdrop-blur-lg will-change-transform bg-white/5 border border-white/10 shadow-xl hover:shadow-yellow-400/40 hover:-translate-y-2 transition-all duration-500 max-w-sm w-full"
         >
           <div className="flex justify-center -mt-20">
             <div className="relative">

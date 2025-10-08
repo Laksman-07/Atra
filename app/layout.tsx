@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Atra Sports Science - Elevate Your Athletic Performance',
   description:
     'Professional sports science organization across South India. Expert coaching, performance analysis, and athletic development in Chennai, Bangalore, Coimbatore, and online.',
+  icons: {icon:'atra_stamp.png',},
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

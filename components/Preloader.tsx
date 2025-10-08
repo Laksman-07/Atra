@@ -31,9 +31,9 @@ export default function Preloader() {
     >
       <div className="flex gap-4">
         <Image
-          src="/Atra-logo-png.png"
-          width={100}
-          height={100}
+          src="/atra_stamp.png"
+          width={150}
+          height={150}
           alt="Logo"
           className="animate-bounce" // Tailwind built-in bounce animation
         />
