@@ -191,7 +191,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        Email <span className="text-red-500">*</span>
+                        Email <span className="text-red-500"> </span>
                       </label>
                       <input
                         type="email"
@@ -200,7 +200,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                        required
+                         
                       />
                     </div>
 
@@ -236,7 +236,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
 
                     <div>
                       <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-1">
-                        Age <span className="text-red-500">*</span>
+                        Age <span className="text-red-500"> </span>
                       </label>
                       <input
                         type="number"
@@ -245,7 +245,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                         value={formData.age}
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                        required
+                         
                         min="1"
                         max="120"
                       />
@@ -254,7 +254,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Gender <span className="text-red-500">*</span>
+                      Gender <span className="text-red-500"> </span>
                     </label>
                     <div className="flex space-x-6">
                       <div className="flex items-center">
@@ -265,7 +265,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                           value="male"
                           onChange={handleChange}
                           className="h-4 w-4 text-primary focus:ring-primary"
-                          required
+                           
                         />
                         <label htmlFor="male" className="ml-2 text-sm text-gray-700">Male</label>
                       </div>
@@ -284,7 +284,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                   </div>
 <div>
   <label htmlFor="goal" className="block text-sm font-medium text-gray-700 mb-1">
-    What's your goal with Atra? <span className="text-red-500">*</span>
+    What's your goal with Atra? <span className="text-red-500"> </span>
   </label>
   <select
     id="goal"
@@ -292,7 +292,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
     value={formData.goal}
     onChange={handleChange}
     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-    required
+     
   >
     <option value="">Select an option</option>
     <option value="Enhance my athletic performance">Enhance my athletic performance</option>
@@ -312,14 +312,14 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
       onChange={handleChange}
       name="customGoal"
       className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-      required
+       
     />
   )}
 </div>
 
                   <div>
                     <label htmlFor="specific" className="block text-sm font-medium text-gray-700 mb-1">
-                      Are you looking for something in specific? <span className="text-red-500">*</span>
+                      Are you looking for something in specific? <span className="text-red-500"> </span>
                     </label>
                     <select
                       id="specific"
@@ -327,7 +327,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       value={formData.specific}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      required
+                       
                     >
                       <option value="">Select an option</option>
                       <option value="sports_science">Sports Science (Inclusive of S&C, Nutrition, Physiotherapy, Psychology & Sports Medicine)</option>
@@ -369,7 +369,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
 
                   <div>
                     <label htmlFor="mode" className="block text-sm font-medium text-gray-700 mb-1">
-                      Mode of sports science consultation <span className="text-red-500">*</span>
+                      Mode of sports science consultation <span className="text-red-500"> </span>
                     </label>
                     <select
                       id="mode"
@@ -377,7 +377,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       value={formData.mode}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      required
+                       
                     >
                       <option value="">Select an option</option>
                       <option value="in_person">In-person</option>
@@ -388,7 +388,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
   {formData.mode == "in_person" && (
                   <div>
                     <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
-                      Preferred Location <span className="text-red-500">*</span>
+                      Preferred Location <span className="text-red-500"> </span>
                     </label>
                     <select
                       id="location"
@@ -396,7 +396,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                       value={formData.location}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      required
+                       
                     >
                       <option value="">Select a location</option>
                       <option value="chennai">Chennai</option>
@@ -405,40 +405,47 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
                     </select>
                   </div>
   )}
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
-                        Your preferred day for a sports science consultation
-                      </label>
-                      <input
-                        type="date"
-                        id="date"
-                        name="date"
-                        value={formData.date}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div>
+    <label
+      htmlFor="date"
+      className="block text-sm font-medium text-gray-700 mb-1"
+    >
+      Your preferred day for a sports science consultation
+    </label>
+    <input
+      type="date"
+      id="date"
+      name="date"
+      value={formData.date}
+      onChange={handleChange}
+      min={new Date(Date.now() + 86400000).toISOString().split("T")[0]} // ✅ Tomorrow’s date
+      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    />
+  </div>
 
-                    <div>
-                      <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-1">
-                        Preferred time for consultation
-                      </label>
-                      <input
-                        type="time"
-                        id="time"
-                        name="time"
-                        value={formData.time}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                  </div>
+  <div>
+    <label
+      htmlFor="time"
+      className="block text-sm font-medium text-gray-700 mb-1"
+    >
+      Preferred time for consultation
+    </label>
+    <input
+      type="time"
+      id="time"
+      name="time"
+      value={formData.time}
+      onChange={handleChange}
+      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    />
+  </div>
+</div>
+
 
                   <div>
   <label htmlFor="lead_info" className="block text-sm font-medium text-gray-700 mb-1">
-    How did you hear about Atra? <span className="text-red-500">*</span>
+    How did you hear about Atra? <span className="text-red-500"> </span>
   </label>
   <select
     id="lead_info"
@@ -446,7 +453,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
     value={formData.lead_info}
     onChange={handleChange}
     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-    required
+     
   >
     <option value="">Select an option</option>
     <option value="Instagram">Instagram</option>
@@ -467,7 +474,7 @@ const currentMapUrl = formData.location ? mapUrls[formData.location] : mapUrls["
       onChange={handleChange}
       name="other_lead_info"
       className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-      required
+       
     />
   )}
 </div>
