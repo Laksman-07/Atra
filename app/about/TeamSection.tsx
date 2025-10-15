@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 type TeamMember = {
   name: string;
@@ -28,12 +27,9 @@ const team: TeamMember[] = [
 export default function TeamSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [direction, setDirection] = useState<"next" | "prev">("next");
-  const [isImageLoading, setIsImageLoading] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
-  // Responsive grid layout
+  // Responsive slide count
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) setSlidesToShow(1);
@@ -45,33 +41,15 @@ export default function TeamSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto slide
+  // Auto-slide logic
   useEffect(() => {
-    const interval = setInterval(() => handleNext(), 5000);
-    return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  const handleNext = () => {
-    if (isTransitioning) return;
-    setDirection("next");
-    setIsTransitioning(true);
-    setIsImageLoading(true);
-    setTimeout(() => {
+    const interval = setInterval(() => {
+      setDirection("next");
       setCurrentIndex((prev) => (prev + 1) % team.length);
-      setIsTransitioning(false);
-    }, 100);
-  };
+    }, 4000); // change slide every 4 seconds
 
-  const handlePrev = () => {
-    if (isTransitioning) return;
-    setDirection("prev");
-    setIsTransitioning(true);
-    setIsImageLoading(true);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev - 1 + team.length) % team.length);
-      setIsTransitioning(false);
-    }, 100);
-  };
+    return () => clearInterval(interval);
+  }, []);
 
   const getVisibleCards = () => {
     const cards = [];
@@ -97,87 +75,61 @@ export default function TeamSection() {
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative" ref={containerRef}>
-          {/* Black overlay while image loads */}
-          {isImageLoading && (
-            <div className="absolute inset-0 bg-black z-20 transition-opacity duration-500 opacity-100" />
-          )}
+        <div className="overflow-visible">
+          <div
+            className={`grid gap-6 ${
+              slidesToShow === 1
+                ? "grid-cols-1"
+                : slidesToShow === 2
+                ? "grid-cols-2"
+                : "grid-cols-3"
+            }`}
+          >
+            {visibleCards.map((member, i) => {
+              const centerIndex = Math.floor(slidesToShow / 2);
+              const isActive = i === centerIndex;
 
-          <div className="overflow-visible relative z-10">
-            <div
-              className={`grid gap-6 ${
-                slidesToShow === 1
-                  ? "grid-cols-1"
-                  : slidesToShow === 2
-                  ? "grid-cols-2"
-                  : "grid-cols-3"
-              }`}
-            >
-              {visibleCards.map((member, i) => {
-                const centerIndex = Math.floor(slidesToShow / 2);
-                const isActive = i === centerIndex;
-
-                return (
+              return (
+                <div
+                  key={member.key}
+                  className={`w-full transition-all duration-500 ${
+                    isActive ? "opacity-100 scale-100" : "opacity-50 scale-95"
+                  }`}
+                  style={{
+                    animation: `${
+                      direction === "next" ? "slideInRight" : "slideInLeft"
+                    } 0.6s cubic-bezier(0.4, 0, 0.2, 1)`,
+                  }}
+                >
                   <div
-                    key={member.key}
-                    className={`w-full transition-all duration-500 ${
-                      isActive ? "opacity-100 scale-100" : "opacity-50 scale-95"
+                    className={`bg-yellow-400 text-black rounded-2xl overflow-hidden shadow-xl mx-auto max-w-sm h-full transition-all duration-500 ${
+                      isActive ? "shadow-2xl scale-105" : "shadow-md hover:scale-100"
                     }`}
-                    style={{
-                      animation: `${
-                        direction === "next" ? "slideInRight" : "slideInLeft"
-                      } 0.6s cubic-bezier(0.4, 0, 0.2, 1)`,
-                    }}
                   >
-                    <div
-                      className={`bg-yellow-400 text-black rounded-2xl overflow-hidden shadow-xl mx-auto max-w-sm h-full transition-all duration-500 ${
-                        isActive ? "shadow-2xl scale-105" : "shadow-md hover:scale-100"
-                      }`}
-                    >
-                      <div className="relative h-96 overflow-hidden bg-black">
+                    <div className="relative h-100 overflow-hidden bg-gray-300">
                         <img
-                          src={member.image}
-                          alt={member.name}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                          loading="lazy"
-                          onLoad={() => setIsImageLoading(false)}
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-full object-cover transition-opacity duration-500 opacity-0"
+                            loading="lazy"
+                            onLoad={(e) => (e.currentTarget.style.opacity = "1")}
                         />
-                      </div>
-                    </div>
+                        </div>
+
+
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={handlePrev}
-            className="absolute top-1/2 -left-4 md:-left-12 transform -translate-y-1/2 bg-yellow-400 text-black p-3 rounded-full shadow-lg hover:bg-yellow-500 hover:scale-110 transition-all duration-200 z-30"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft size={28} />
-          </button>
-
-          <button
-            onClick={handleNext}
-            className="absolute top-1/2 -right-4 md:-right-12 transform -translate-y-1/2 bg-yellow-400 text-black p-3 rounded-full shadow-lg hover:bg-yellow-500 hover:scale-110 transition-all duration-200 z-30"
-            aria-label="Next slide"
-          >
-            <ChevronRight size={28} />
-          </button>
         </div>
 
-        {/* Dots */}
+        {/* Dots Indicator */}
         <div className="flex justify-center gap-2 mt-8">
           {team.map((_, i) => (
             <button
               key={i}
-              onClick={() => {
-                setIsImageLoading(true);
-                setCurrentIndex(i);
-              }}
+              onClick={() => setCurrentIndex(i)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === currentIndex ? "bg-yellow-400 w-8" : "bg-gray-600 w-2 hover:bg-gray-500"
               }`}

@@ -110,7 +110,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div>
+          {/* <div>
             <h4 className="text-xl font-semibold text-yellow-400 mb-4">Stay Updated</h4>
             <p className="text-gray-300 text-sm mb-4">
               Get the latest sports science insights and training tips
@@ -125,7 +125,7 @@ export default function Footer() {
                 Subscribe
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
               
         {/* Bottom Bar */}

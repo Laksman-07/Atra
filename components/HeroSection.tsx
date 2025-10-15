@@ -16,11 +16,14 @@ export default function HeroSection() {
           className="absolute inset-0 w-full h-full object-cover"
           poster="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1920"
         >
-          <source src="/bg-video1.mp4" type="video/mp4" />
+          <source src="/bg-video2.MP4" type="video/mp4" />
         </video>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent"></div>
+        {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/10"></div>
+
+{/* Gradient for cinematic feel */}
+<div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/60"></div>
       </div>
 
       {/* Content */}
