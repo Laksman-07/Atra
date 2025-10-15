@@ -12,6 +12,8 @@ export default function HeroSection() {
     chennai: '/Atra-chennai.jpg',
     bangalore: '/Atra-bangalore.jpg',
     coimbatore: '/Atra-coimbatore.jpg',
+    online: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1920',
+
   };
 
   const imageSrc = regionImages[location] || regionImages['chennai'];
