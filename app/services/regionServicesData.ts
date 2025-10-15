@@ -95,27 +95,6 @@ export interface Program {
             ],
           },
           {
-            title: "Online training (1-1 training)",
-            description:
-              "Ideal for anyone who wants to train at convenient times without commuting.",
-            price: "6,000 / Month , ₹15,000 / Quarter",
-            inclusives: [
-                "12 Strength and Conditioning sessions.",
-                "1 Sports Nutrition Consultation and Report"
-
-            ],
-          },
-          {
-            title: "Online training (group training)",
-            description:
-              "For individuals who enjoy energy, challenge, and shared motivation online.",
-            price: "4,000 / Month , ₹10,000 / Quarter",
-            inclusives: [
-                "12 Strength and Conditioning sessions.",
-                "1 Sports Nutrition Consultation and Report"
-            ],
-          },
-          {
             title: "Home-fit Program (Home training)",
             description:
               "For those who want to stay active and strong from the comfort of their own home.",
@@ -231,28 +210,6 @@ export interface Program {
               ],
             },
             {
-              title: "Online training (1-1 training)",
-              description:
-                "Ideal for anyone who wants to train at convenient times without commuting.",
-              price: "6,000 / Month , ₹15,000 / Quarter",
-              inclusives: [
-                  "12 Strength and Conditioning sessions.",
-                  "1 Sports Nutrition Consultation and Report",
-                  "1 Sport Medicine Consultation"
-              ],
-            },
-            {
-              title: "Online training (group training)",
-              description:
-                "For individuals who enjoy energy, challenge, and shared motivation online.",
-              price: "4,000 / Month , ₹10,000 / Quarter",
-              inclusives: [
-                  "12 Strength and Conditioning sessions.",
-                  "1 Sports Nutrition Consultation and Report",
-                  "1 Sport Medicine Consultation"
-              ],
-            },
-            {
               title: "Nutrition Guidance",
               description:
                 "For individuals who want nutrition guidance to support an active lifestyle",
@@ -350,26 +307,6 @@ export interface Program {
               inclusives: [
                 "Strength and Conditioning sessions from Mon-Fri",
                 "1 Sports Nutrition Consultation and Report",
-              ],
-            },
-            {
-              title: "Online training (1-1 training)",
-              description:
-                "Ideal for anyone who wants to train at convenient times without commuting.",
-              price: "6,000 / Month , ₹15,000 / Quarter",
-              inclusives: [
-                  "12 Strength and Conditioning sessions.",
-                  "1 Sports Nutrition Consultation and Report",
-              ],
-            },
-            {
-              title: "Online training (group training)",
-              description:
-                "For individuals who enjoy energy, challenge, and shared motivation online.",
-              price: "4,000 / Month , ₹10,000 / Quarter",
-              inclusives: [
-                  "12 Strength and Conditioning sessions.",
-                  "1 Sports Nutrition Consultation and Report",
               ],
             },
             {

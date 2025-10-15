@@ -6,7 +6,7 @@ import Preloader from '@/components/Preloader';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Atra Sports Science - Elevate Your Athletic Performance',
+  title: 'Atra - Behind Every Move, There\'s Science',
   description:
     'Professional sports science organization across South India. Expert coaching, performance analysis, and athletic development in Chennai, Bangalore, Coimbatore, and online.',
   icons: {icon:'atra_stamp.png',},

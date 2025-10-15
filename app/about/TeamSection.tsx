@@ -106,14 +106,17 @@ export default function TeamSection() {
                       isActive ? "shadow-2xl scale-105" : "shadow-md hover:scale-100"
                     }`}
                   >
-                    <div className="relative h-100 overflow-hidden bg-gray-200">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                        loading="lazy"
-                      />
-                    </div>
+                    <div className="relative h-100 overflow-hidden bg-gray-300">
+                        <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-full object-cover transition-opacity duration-500 opacity-0"
+                            loading="lazy"
+                            onLoad={(e) => (e.currentTarget.style.opacity = "1")}
+                        />
+                        </div>
+
+
                   </div>
                 </div>
               );

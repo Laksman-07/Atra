@@ -1,6 +1,21 @@
 'use client';
 
+import Image from 'next/image';
+import { useParams } from 'next/navigation';
+import { motion } from 'framer-motion';
+
 export default function HeroSection() {
+  const params = useParams();
+  const location = (params?.location as string)?.toLowerCase() || 'chennai'; // default to chennai
+
+  const regionImages: Record<string, string> = {
+    chennai: '/Atra-chennai.jpg',
+    bangalore: '/Atra-bangalore.jpg',
+    coimbatore: '/Atra-coimbatore.jpg',
+  };
+
+  const imageSrc = regionImages[location] || regionImages['chennai'];
+
   const handleScroll = () => {
     const section = document.getElementById('services-list');
     if (section) {
@@ -10,34 +25,27 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
-      <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          poster="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        >
-          {/* <source src="https://videos.pexels.com/video-files/2795405/2795405-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-          <source src="https://videos.pexels.com/video-files/2795405/2795405-hd_1920_1080_25fps.mp4" type="video/mp4" />
-          Fallback image if video fails to load */}
-          <div 
-            className="w-full h-full bg-cover bg-center"
-            style={{ 
-              backgroundImage: `url('https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1920')`
-            }}
-          ></div>
-        </video>
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      {/* Background Image with fade transition */}
+      <motion.div
+        key={location}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="absolute inset-0"
+      >
+        <Image
+          src={imageSrc}
+          alt={`${location} background`}
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/70"></div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-2xl px-6">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-          Our Services
-        </h1>
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Services</h1>
         <p className="text-lg md:text-xl text-gray-200 mb-8">
           Choose the path that fits your journey
         </p>
