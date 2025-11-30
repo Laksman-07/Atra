@@ -6,15 +6,18 @@ import Link from 'next/link';
 export default function HeroSection() {
   return (
     <section className="relative h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1920')",
-          }}
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        >
+          <source src="/bg-video1.mp4" type="video/mp4" />
+        </video>
 
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/10"></div>
